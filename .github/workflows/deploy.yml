@@ -40,11 +40,11 @@ jobs:
           source: ./client/build
           delete: true
 
-      - name: Invalidate CloudFront cache
-        uses: aws-actions/cloudfront-invalidate-cache@v1
-        with:
-          distribution-id: ${{ env.CLOUDFRONT_DISTRIBUTION_ID }}
-          paths: "/*"
+      # - name: Invalidate CloudFront cache
+      #   uses: aws-actions/cloudfront-invalidate-cache@v1
+      #   with:
+      #     distribution-id: ${{ env.CLOUDFRONT_DISTRIBUTION_ID }}
+      #     paths: "/*"
 
       # ---- BACKEND DEPLOYMENT ----
       - name: Zip backend for Elastic Beanstalk
