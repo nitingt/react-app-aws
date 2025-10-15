@@ -5,7 +5,20 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  "https://" + process.env.CODESPACE_NAME + "-3000.app.github.dev",
+  "https://3000-" + process.env.CODESPACE_NAME + ".app.github.dev"
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 const PORT = process.env.PORT || 5000;
 
 // Middleware to log all incoming requests
